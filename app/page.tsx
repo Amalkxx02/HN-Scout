@@ -3,22 +3,29 @@ import ArticleCard from "@/components/ui/ArticleCard/ArticleCard";
 import PaginationBar from "@/components/ui/PaginationBar/PaginationBar";
 import Error from "@/components/ui/error/Error";
 
-export default async function ArticlesList({ searchParams }) {
+
+export default async function ArticlesList({ searchParams }: any) {
   // Grab the current page number from the query params (default 0)
-  const page = parseInt(searchParams.page || 0);
+  // We use the optional chaining '?' and default value '0' for safety
+  const pageParam = searchParams.page;
+  const page = parseInt(pageParam || '0');
 
   // Quick sanity check — no negative or NaN pages allowed
   if (isNaN(page) || page < 0) {
     return <Error message="Page number out of range" />;
   }
 
-  let articles;
+  // Use the specific type for articles
+  let articles: any;
+  
   try {
     // Fetch the articles for the current page
+    // The 'await' result is explicitly cast to the expected type
     articles = await sortedArticleList(page);
-  } catch (err: any) {
-    // If API call fails or something breaks, show error screen
-    return <Error message={err.message || "Network Error"} />;
+  } catch (err) {
+    // TypeScript recommends catching the error and then checking its type,
+    // or asserting it if you're sure it's an object with a message.
+    return <Error message={"Network Error"} />;
   }
 
   // Grab the list of articles and total page count
@@ -39,7 +46,7 @@ export default async function ArticlesList({ searchParams }) {
         </h1>
 
         {/* Main article list */}
-        {articleList?.map((article) => (
+        {articleList.map(({article}:any) => (
           <ArticleCard key={article.objectID} article={article} />
         ))}
       </div>

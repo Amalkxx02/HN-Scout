@@ -1,4 +1,4 @@
-export default function Error({ message }) {
+export default function Error({ message }:any) {
   return (
     <div className="flex w-full h-full justify-center items-center font-light text-1xl">
       <div className="flex">

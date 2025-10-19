@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { User, Star, Link as LinkIcon, Calendar } from "lucide-react";
 
-export default function ArticleDetails({ article, id }) {
+interface ArticleDetailsProps {
+  article: any;
+  id: number;
+}
+
+export default function ArticleDetails( {article,id}:ArticleDetailsProps ) {
   return (
     <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-6 sm:p-8 mb-8">
       {/* Main article title */}

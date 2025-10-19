@@ -9,7 +9,7 @@ export default async function sortedArticleList(pageNo: number) {
     throw new Error("Network Error");
   }
   // custom function to calculate score and show as human understandable
-  function getScoreOutOf100(points, numberOfComments, timeDecay) {
+  function getScoreOutOf100({points}:any, {numberOfComments}:any, {timeDecay}:any) {
 
     const rawScore = Math.max(
       0,
@@ -25,7 +25,7 @@ export default async function sortedArticleList(pageNo: number) {
 
   const scoredArticlesList =
 
-    articleList?.hits?.map((article) => {
+    articleList?.hits?.map(({article}:any) => {
 
       const points = article?.points;
       const numberOfComments = article?.num_comments;
@@ -39,6 +39,6 @@ export default async function sortedArticleList(pageNo: number) {
       return { ...article, score };
     }) || [];
   //sort the page based on the score
-  scoredArticlesList.sort((a, b) => b.score - a.score);
+  scoredArticlesList.sort(({a}:any, {b}:any) => b.score - a.score);
   return { ...articleList, hits: scoredArticlesList };
 }

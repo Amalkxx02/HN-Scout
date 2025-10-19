@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function ArticleCard({ article }) {
+export default function ArticleCard({ article }:any) {
   return (
     <div className="grid pb-5">
       {/* Each card links to its own article page */}

@@ -1,6 +1,10 @@
 import Link from "next/link";
+interface PaginationBarProps {
+  page: number;
+  maxPage: number;
+}
 
-export default function PaginationBar({ page, maxPage }) {
+export default function PaginationBar({ page,maxPage}:PaginationBarProps) {
   // No pages? No pagination.
   if (!maxPage) {
     return null;

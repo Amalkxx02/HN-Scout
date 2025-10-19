@@ -1,6 +1,6 @@
 import { User } from "lucide-react";
 
-export default function CommentCard({ comment }) {
+export default function CommentCard({ comment }:any) {
   return (
         <div className="bg-white rounded-lg border border-slate-200 p-5 flex items-start space-x-4">
           {/* Avatar placeholder*/}
