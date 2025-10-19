@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  plugins: [
+    require("@tailwindcss/typography"), // Add this line
+  ],
 };
 
 export default nextConfig;
