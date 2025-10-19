@@ -21,7 +21,7 @@ export default async function ArticlesList({ searchParams }: any) {
     // Fetch the articles for the current page
     articles = await sortedArticleList(page);
   } catch (err) {
-    return <Error message={err||"Network Error"} />;
+    return <Error message={"Network Error"} />;
   }
 
   // Grab the list of articles and total page count

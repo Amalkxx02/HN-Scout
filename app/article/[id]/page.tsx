@@ -18,7 +18,7 @@ export default async function Article({ params }: any) {
     // Fetch the article details + last 5 comments
     article = await lastComments(articleIdNumber);
   } catch (err) {
-    return <Error message={err || "Network error"} />;
+    return <Error message={"Network error"} />;
   }
 
   // No title if invalid data or wrong ID
