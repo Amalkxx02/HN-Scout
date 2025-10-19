@@ -1,10 +1,10 @@
 import { getArticlesList } from "@/apis/articleApi";
 
-export default async function sortedArticleList(pageNo: number) {
+export default async function sortedArticleList(pageNo: number, isInfinite:boolean) {
   //fetch article list
   let articleList;
   try {
-    articleList = await getArticlesList(pageNo);
+    articleList = await getArticlesList(pageNo,isInfinite);
   } catch (error) {
     throw new Error("Network Error");
   }

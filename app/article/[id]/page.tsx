@@ -5,7 +5,7 @@ import Error from "@/components/ui/error/Error";
 
 export default async function Article( {params}:any) {
   // Grab the article ID from the route.
-  const id = params.id;
+  const id = await params.id;
   
   // Convert ID to a number for the API call
   const articleIdNumber = parseInt(id);

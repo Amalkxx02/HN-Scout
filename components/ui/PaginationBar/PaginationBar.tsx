@@ -9,8 +9,6 @@ export default function PaginationBar({ page,maxPage}:PaginationBarProps) {
   if (!maxPage) {
     return null;
   }
-
-  console.log(page,maxPage)
   return (
     // Sticky footer pagination bar
     <div className="fixed bottom-0 left-0 right-0 border-t border-slate-200 bg-white/80 backdrop-blur-sm">
@@ -18,7 +16,7 @@ export default function PaginationBar({ page,maxPage}:PaginationBarProps) {
         {/* Prev Button (redirect 0 when already on page 0) */}
         <Link
           href={`?page=${page > 0 ? page - 1 : 0}`}
-          className="w-50 h-10 flex items-center justify-center rounded-full text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors"
+          className="w-100 h-10 flex items-center justify-center rounded-full text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors"
           aria-label="Previous page"
         >
           &lt;
@@ -44,7 +42,7 @@ export default function PaginationBar({ page,maxPage}:PaginationBarProps) {
         {/* Next Button (redirect to last page when on last page) */}
         <Link
           href={`?page=${page < maxPage - 1 ? page + 1 : maxPage - 1}`}
-          className="w-50 h-10 flex items-center justify-center rounded-full text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors"
+          className="w-100 h-10 flex items-center justify-center rounded-full text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors"
           aria-label="Next page"
         >
           &gt;
