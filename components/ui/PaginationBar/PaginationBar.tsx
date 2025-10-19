@@ -10,6 +10,7 @@ export default function PaginationBar({ page,maxPage}:PaginationBarProps) {
     return null;
   }
 
+  console.log(page,maxPage)
   return (
     // Sticky footer pagination bar
     <div className="fixed bottom-0 left-0 right-0 border-t border-slate-200 bg-white/80 backdrop-blur-sm">

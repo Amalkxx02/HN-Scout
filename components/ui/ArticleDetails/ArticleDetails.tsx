@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { User, Star, Link as LinkIcon, Calendar } from "lucide-react";
 
-interface ArticleDetailsProps {
+type ArticleDetailsProps = {
   article: any;
-  id: number;
-}
+  id: number; // depends on how you pass it
+};
 
 export default function ArticleDetails( {article,id}:ArticleDetailsProps ) {
   return (
