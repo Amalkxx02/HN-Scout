@@ -6,7 +6,6 @@ import Error from "@/components/ui/error/Error";
 
 export default async function ArticlesList({ searchParams }: any) {
   // Grab the current page number from the query params (default 0)
-  // We use the optional chaining '?' and default value '0' for safety
   const pageParam = searchParams.page;
   const page = parseInt(pageParam || '0');
 
@@ -20,12 +19,9 @@ export default async function ArticlesList({ searchParams }: any) {
   
   try {
     // Fetch the articles for the current page
-    // The 'await' result is explicitly cast to the expected type
     articles = await sortedArticleList(page);
   } catch (err) {
-    // TypeScript recommends catching the error and then checking its type,
-    // or asserting it if you're sure it's an object with a message.
-    return <Error message={"Network Error"} />;
+    return <Error message={err||"Network Error"} />;
   }
 
   // Grab the list of articles and total page count

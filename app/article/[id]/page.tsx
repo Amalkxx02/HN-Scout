@@ -7,23 +7,18 @@ export default async function Article({ params }: any) {
   // Grab the article ID from the route.
   const id = params.id;
 
-  // Convert ID to a number for the API call/hook, assuming it expects a number
+  // Convert ID to a number for the API call
   const articleIdNumber = parseInt(id, 10);
   if (isNaN(articleIdNumber)) {
     return <Error message="Invalid Article ID format" />;
   }
 
   let article: any;
-
   try {
     // Fetch the article details + last 5 comments
-    // Cast the result to the expected ArticleData type
     article = await lastComments(articleIdNumber);
   } catch (err) {
-    // FIX: Remove ': any' and safely access the message property from the 'unknown' error type
-    const errorMessage =
-      (err as { message?: string })?.message || "Network error / Invalid page";
-    return <Error message={errorMessage} />;
+    return <Error message={err || "Network error"} />;
   }
 
   // No title if invalid data or wrong ID
@@ -35,7 +30,6 @@ export default async function Article({ params }: any) {
     <div className="bg-slate-50 min-h-screen py-8 sm:py-12">
       <div className="max-w-4xl mx-auto px-4">
         {/* Top section: main article info */}
-        {/* The ArticleDetails component will need to accept the ArticleData type for 'article' */}
         <ArticleDetails article={article} id={id} />
 
         {/* Comments section */}
