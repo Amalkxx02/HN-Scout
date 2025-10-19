@@ -3,12 +3,12 @@ import ArticleDetails from "@/components/ui/ArticleDetails/ArticleDetails";
 import CommentCard from "@/components/ui/CommentCard/CommentCard";
 import Error from "@/components/ui/error/Error";
 
-export default async function Article( params : any) {
+export default async function Article( {params}:any) {
   // Grab the article ID from the route.
   const id = params.id;
-
+  
   // Convert ID to a number for the API call
-  const articleIdNumber = parseInt(id, 10);
+  const articleIdNumber = parseInt(id);
   if (isNaN(articleIdNumber)) {
     return <Error message="Invalid Article ID format" />;
   }
