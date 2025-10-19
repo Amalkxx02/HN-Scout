@@ -4,7 +4,7 @@ import PaginationBar from "@/components/ui/PaginationBar/PaginationBar";
 import Error from "@/components/ui/error/Error";
 
 
-export default async function ArticlesList({ searchParams }: any) {
+export default async function ArticlesList(searchParams : any) {
   // Grab the current page number from the query params (default 0)
   const pageParam = searchParams.page;
   const page = parseInt(pageParam || '0');
@@ -42,7 +42,7 @@ export default async function ArticlesList({ searchParams }: any) {
         </h1>
 
         {/* Main article list */}
-        {articleList.map(({article}:any) => (
+        {articleList.map((article:any) => (
           <ArticleCard key={article.objectID} article={article} />
         ))}
       </div>

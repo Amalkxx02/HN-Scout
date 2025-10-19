@@ -3,7 +3,7 @@ import ArticleDetails from "@/components/ui/ArticleDetails/ArticleDetails";
 import CommentCard from "@/components/ui/CommentCard/CommentCard";
 import Error from "@/components/ui/error/Error";
 
-export default async function Article({ params }: any) {
+export default async function Article( params : any) {
   // Grab the article ID from the route.
   const id = params.id;
 
@@ -42,7 +42,7 @@ export default async function Article({ params }: any) {
           {article.children?.length > 0 ? (
             <div className="space-y-5">
               {/* The comment mapping now correctly uses the typed array */}
-              {article.children.map(({comment}:any) => (
+              {article.children.map((comment:any) => (
                 <CommentCard key={comment.created_at_i} comment={comment} />
               ))}
             </div>
